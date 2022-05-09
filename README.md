@@ -227,4 +227,4 @@ The topics covered are the following:
 ## Additional notes
 
 * If you're interested in an Anki deck version, please check [#1](https://github.com/teivah/designdeck/issues/1)
-* If you're preparing an algorithm & data  structure interview, you can take a look at [algodeck](https://github.com/teivah/algodeck/)
+* If you're preparing an algorithm & data  structure interview, you can take a look at [Algo Deck](https://github.com/teivah/algodeck/)
