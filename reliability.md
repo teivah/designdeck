@@ -12,7 +12,8 @@ A process in a system of interconnected parts in which the failure of one or few
 
 ## Circuit breaker
 
-Used to prevent a network or service failure from cascading to other failures
+Used to prevent a network or service failure from [cascading failures](#cascading-failure)
+
 Implemented on the client-side
 
 Three states:
@@ -52,7 +53,13 @@ For example, if we want about 0.1% false timeouts, then we should set the timeou
 
 ## Jitter
 
-Introduces a part of randomness to avoid synchronized retry spikes experienced during cascading failures
+Introduces a part of randomness to avoid synchronized retry spikes experienced during [cascading failures](#cascading-failure)
+
+## Load shedding
+
+Action to reduce the load on something
+
+Example: when the CPU utilization reaches a threshold, the server can start returning errors
 
 ## Phi-accrual failure detector
 
@@ -68,7 +75,7 @@ Mechanism that rejects a request when a specific quota is exceeded
 
 ## Reliability
 
-Reliability
+Continuing to work correctly even when things go wrong
 
 ## Retry amplification
 
@@ -82,18 +89,14 @@ Source: [Understanding Distributed Systems](https://understandingdistributed.sys
 
 In case of a long dependency chain, perhaps we should only retry at a single level of the chain
 
-## Scalability
-
-System's ability to cope with increased load
-
 ## Scalability ceiling
 
 Hard limit (e.g., device maximum throughput)
 
 ## Service dependency, 5 questions to ask
 
-- Timeout?
+- [Timeout](#how-to-set-a-timeout)?
 - Retry policy?
-- Circuit breaker?
+- [Circuit breaker](#circuit-breaker)?
 - Reasonable fallback value in case of failure?
 - Can we defer the work and try again later?

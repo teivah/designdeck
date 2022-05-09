@@ -2,7 +2,7 @@
 
 ## Cache aside
 
-Application is responsible for reading and writing to the DB (using write-through or write-back policy)
+Application is responsible for reading and writing to the DB (using [write-through or write-back](#write-through-vs-write-back) policy)
 
 The cache doesn't interact with the storage directly
 
@@ -26,7 +26,7 @@ Inline caching (cache on top of the store):
 ## Cache locations
 
 - Client caching
-- CDN
+- [CDN](cloud.md#cdn)
 - Application caching
 - Database caching (query or object)
 
@@ -36,7 +36,7 @@ Cache hit ratio: hits / total accesses
 
 ## Read-through
 
-In cache-aside, the application is responsible for populating the cache
+In [cache-aside](#cache-aside), the application is responsible for populating the cache
 
 In read-through, the logic is supported by a library or a cache provider on top of the DB
 

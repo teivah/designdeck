@@ -48,7 +48,7 @@ A TTL is used to inform the cache how long the entry is valid
 
 ## Health checks: active vs. passive
 
-Passive: performed by the load balances as it routes incoming requests (e.g., 503)
+Passive: performed by the load balances as it routes incoming requests (e.g., HTTP status code 503)
 
 Active: the load balancer actively checking the health of the servers via a query to their health endpoint
 
@@ -103,4 +103,4 @@ When there are too many requests for the process, the backlog reaches a limit an
 
 Communication protocol (layer 7) provides a full-duplex communication channel over a single TCP connection
 
-Different from HTTP but compatible with HTTP (starts as an HTTP connection and then is upgraded via a well-defined handshake to a TCP connection)
+Different from [HTTP](http.md#http) but compatible with HTTP (starts as an HTTP connection and then is upgraded via a well-defined handshake to a TCP connection)

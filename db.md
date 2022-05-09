@@ -20,9 +20,9 @@ A system is Byzantine fault-tolerant if it continues to operate correctly if in 
 
 ## CALM theorem
 
-A program has a consistent, coordination-free (e.g., consensus-free) distributed implementation if and only if it is monotonic
+A program has a consistent, coordination-free (e.g., [consensus](#consensus)-free) distributed implementation if and only if it is monotonic
 
-Consistency in this context doesn't mean linearizability. It focuses on the consistency of the program's output while traditional consistency focus on the consistency of reads and writes.
+Consistency in this context doesn't mean [linearizability](#linearizability). It focuses on the consistency of the program's output while traditional consistency focus on the consistency of reads and writes.
 
 In CALM, a consistent program is one that produces the same output no matter in which order the inputs are processed and despite any conflicts. Said differently, does the implementation produce the outcome we expect despite any race condition that may arise.
 
@@ -34,7 +34,7 @@ Consistency, availability, partition tolerance (e.g., one node cut off from the 
 
 Eventual consistency doesn't guarantee causality (an operation that happened before another is observed in the correct order by all replicas)
 
-To preserve causality, we don't necessarily need to reach for strong consistency, the weaker is the causal consistency model
+To preserve [causality](design.md#causality), we don't necessarily need to reach for strong consistency, the weaker is the causal [consistency model](#consistency-models)
 
 Implementation: when a replica receives a new write, it doesn't apply it locally immediately. First, it checks whether the write's dependencies have been committed locally. If not, it waits until the required version appears.
 
@@ -42,7 +42,7 @@ Strongest consistency model that solves the CAP theorem
 
 ## Chain replication
 
-Replication protocol that uses a different topology than leader based replication protocols like Raft
+Replication protocol that uses a different topology than leader based replication protocols like [Raft](#raft)
 
 Left-most process referred as the chain's head, right-most as the chain's tail:
 - Client send writes to the head, which updates its local state and forwards to the next process in the chain
@@ -52,7 +52,7 @@ Left-most process referred as the chain's head, right-most as the chain's tail:
 
 ![](res/chain-replication.png)
 
-Fault tolerance is delegated to a dedicated component: control plane
+[Fault tolerance](reliability.md#fault-tolerance) is delegated to a dedicated component: control plane
 - If head fails: the control plane removes it and makes the next as the head
 - If intermediate process X fail: the control plane removes it and creates a new link between X's predecessor and X's successor
 - If tail fails: the control plane removes it and makes the predecessor as the new tail
@@ -77,13 +77,13 @@ In the end, concurrency control serves the same purpose as atomicity
 
 ## Consensus
 
-Set of processes agreeing on some data value in a fault-tolerant way
+Set of processes agreeing on some data value in a [fault-tolerant](reliability.md#fault-tolerance) way
 
 ## Consistency models
 
 Describe what expectations clients might have in terms of possible returned values despite the existence of multiple copies of data and concurrent access to it
 
-Not the C in ACID but the C in CAP (converging to an end state)
+Not the C in [ACID](#acid-property) but the C in [CAP](#cap-theorem) (converging to an end state)
 
 ![](res/consistency-models.png)
 
@@ -100,11 +100,11 @@ Command Query Responsibility Segregation
 Dissociate writes (command) from reads (query)
 
 Pros:
-- Allows to create stores per use case (e.g., analytics, geospatial)
+- Allows creating stores per use case (e.g., analytics, geospatial)
 - Scale the read part independently
 
 Cons:
-- Eventual consistency between the stores
+- [Eventual consistency](#eventual-consistency) between the stores
 
 ## CRDT
 
@@ -117,7 +117,7 @@ Properties:
 - The merge operation returns the least upper bound between two object's state
   Example: register, counter, sets, dictionaries, graph
 
-Allows to solve conflicts and achieve strong eventual consistency without consensus
+Allows to solve conflicts and achieve [strong eventual consistency](#strong-eventual-consistency) without [consensus](#consensus)
 
 ## DB indexes tradeoff
 
@@ -146,17 +146,17 @@ A materialized view is a copy (written to disk)
 
 ## Dirty read
 
-Isolation problem
+[Isolation](#isolation-level) problem
 
 A transaction observes a write from a transaction that hasn't been completed yet
 
 ## Dirty write
 
-Isolation problem
+[Isolation](#isolation-level) problem
 
 A transaction overwrites the value written by another transaction that hasn't been committed yet
 
-## Document vs relational
+## Document vs. relational
 
 Document (schema-on-read):
 - Schema flexibility
@@ -169,7 +169,7 @@ Relational (schema-on-write):
 - Many-to-one and many-to-many relationships
 - ACID
 
-## Document-partitioned vs term-partitioned indexes
+## Document-partitioned vs. term-partitioned indexes
 
 Document-partitioned indexes:
 - Secondary indexes stored in the same partition as the record itself
@@ -217,7 +217,7 @@ Monotonically increasing token that increments whenever a client acquires a dist
 
 ## Fuzzy read
 
-Isolation problem
+[Isolation](#isolation-level) problem
 
 A transaction reads a value twice but sees a different value in each read because a committed transaction updated the value between the two reads
 
@@ -237,7 +237,7 @@ Yet, if the connections become more complex, it's more natural to start modeling
 
 ## Hot spot in partitioning
 
-Partition is heavily loaded compared to others
+[Partition](#partitioning-sharding) is heavily loaded compared to others
 
 Also called skew
 
@@ -273,7 +273,7 @@ Hash partitioning: hash function is applied to each key and a partition owns a r
 
 ## Knee point
 
-Moment when linear scalability is not possible anymore
+Moment when linear [scalability](design.md#scalability) is not possible anymore
 
 ## Leader election 
 
@@ -294,9 +294,9 @@ Also known as strong consistency
 
 ## LSM tree
 
-xLog-Structured Merge tree
+Log-Structured Merge tree
 
-Consists of smaller mutable memory-resident (memtable) and larger immutable disk-resident (SSTable) components
+Consists of smaller mutable memory-resident (memtable) and larger immutable disk-resident ([SSTable](#sstable)) components
 
 Memtables data are sorted and flushed on disk when their size reaches a configurable threshold or periodically
 
@@ -306,15 +306,17 @@ Examples: Lucene, Cassandra, Bitcask, etc.
 
 ## LSM tree vs. B-tree
 
-LSM-tree faster for writes, slower for reads because it has to check multiple data structures (bigger read amplification): memtable and SSTable
+[LSM-tree](#lsm-tree) faster for writes, slower for reads because it has to check multiple data structures (bigger read amplification): memtable and SSTable
+
 Compaction can impact ongoing requests
 
 B-tree faster for reads, slower for write as it must write every piece of data at least twice in the WAL & tree itself (bigger write amplification)
+
 Each key exists in exactly one place => easier to offer strong transactional semantics
 
 ## Main reasons to partition data
 
-- Scalability
+- [Scalability](design.md#scalability)
 - Faster for reads
 
 ## Monotonic reads consistency
@@ -377,7 +379,7 @@ Define the partition type based on the primary access pattern
 
 ## Phantom read
 
-Isolation problem
+[Isolation](#isolation-level) problem
 
 A transaction reads a set of objects matching a specific condition, while another transaction adds, updates, or deletes an object matching the same condition
 
@@ -409,11 +411,11 @@ Replication enables consensus
 
 ## Read committed consistency
 
-Consistency level that strengthens read uncommitted by preventing dirty reads: transactions are not allowed to observe writes from transactions which do no commit
+Consistency level that strengthens read uncommitted by preventing [dirty reads](#dirty-read): transactions are not allowed to observe writes from transactions which do no commit
 
 ## Read uncommitted consistency
 
-Consistency level that prohibits dirty writes where two transactions modify the same object concurrently before committing
+Consistency level that prohibits [dirty writes](#dirty-write) where two transactions modify the same object concurrently before committing
 
 Clients can see the results of writes before the writes are durable
 
@@ -452,7 +454,7 @@ Notes:
 
 ## Relationship between causality and linearizability
 
-Linearizability implies causality: any system that is linearizable will preserve causality correctly
+[Linearizability](#linearizability) implies causality: any system that is linearizable will preserve causality correctly
 
 ## Replication or partition?
 
@@ -460,29 +462,29 @@ Replication:
 - Read-heavy
 - Improves availability but makes consistency heavier
 
-Partition:
+[Partition](#partitioning-sharding):
 - Dataset doesn't fit on a single node
 - Write-heavy
 
-## Schema-on-read vs schema-on-write
+## Schema-on-read vs. schema-on-write
 
 Schema-on-read: implicit schema but not enforced by the DB (also called schemaless but misleading)
 
-Schema-on-write: explicit schema, the DB ensures all writes are conforming to it (e.g. relational DB)
+Schema-on-write: explicit schema, the DB ensures all writes are conforming to it (e.g., relational DB)
 
 ## Serializability
 
-I in ACID (strong isolation level)
+I in [ACID](#acid-property) (strong isolation level)
 
 Equivalent to serial execution (no interleaving due to concurrent transactions)
 
-Caveat: It's possible that serial order is different from the order in which transactions were actually run. If not, we need a stricter isolation level: strict serializability (serializability + linearizability).
+Caveat: It's possible that serial order is different from the order in which transactions were actually run. If not, we need a stricter isolation level: strict serializability ([serializability](#serializability) + [linearizability](#linearizability)).
 
 ## Serializable Snapshot Isolation (SSI)
 
-Snapshot Isolation (SI) allows write skew
+Snapshot Isolation (SI) allows [write skew](#write-skew)
 
-SSI is a stricter isolation level than SI: check at runtime for conflicts between transactions
+SSI is a stricter isolation level than [Snapshot Isolation (SI)](#snapshot-isolation-si): check at runtime for conflicts between transactions
 Downside: increase the number of aborted transactions
 
 ## Snapshot Isolation (SI)
@@ -491,7 +493,7 @@ Guarantee that all reads made in a transaction will see a consistent snapshot of
 
 In practice, it reads the last committed values that existed at the time it started
 
-Allows write skew
+Allows [write skew](#write-skew)
 
 ## Split-brain
 
@@ -501,7 +503,7 @@ As a node is unaware that another node is still functioning, it can lead to data
 
 ## SSTable
 
-Sorted String Table, immutable components of a LSM tree
+Sorted String Table, immutable components of a [LSM tree](#lsm-tree)
 
 Sorted immutable data structure
 
@@ -521,11 +523,11 @@ Requires:
 - Eventual delivery: every update applied at a replica is eventually applied to all replicas
 - Strong convergence: guarantees that replicas that _have_ executed the same updates have the same state (with eventual consistency, the guarantee is that the replicas _eventually_ reach the same state, once consensus is reached)
 
-Strong convergence requires convergent replicated data types (part of CRDT family)
+Strong convergence requires convergent replicated data types (part of [CRDT](#crdt) family)
 
 Main difference with eventual consistency:
 - Leaderless replication
-- No consensus needed, instead, it relies on a deterministic outcome for any conflict
+- No [consensus](#consensus) needed, instead, it relies on a deterministic outcome for any conflict
 
 A solution to the CAP theorem
 
@@ -544,6 +546,7 @@ Protocol used to implement atomic transaction commits across multiple processes
 Write-ahead log (or redo log)
 
 Append-only file to which every modification must be written
+
 Used for restoration in the event of a DB crash
 
 ## When to use a column-oriented store
@@ -555,6 +558,7 @@ Limited space (storing same data type together offers a better compression ratio
 ## Why DB schemaless is misleading
 
 There is an implicit schema but not enforced by the DB
+
 More accurate term: schema-on-read
 
 Different from relational DB with shema-on-write where the schema is explicit and the DB ensures all written data conforms to it

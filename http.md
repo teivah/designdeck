@@ -33,16 +33,16 @@ Relies on a transport protocol (OSI level 4, TCP most of the times but not manda
 
 ## HTTP methods: safeness and idempotence
 
-| Method | Safe | Idempotent |
-|--------|-----|------------|
-| GET    | ✅    | ✅           |
-| PUT    | ❌    | ✅           |
-| POST   |  ❌   | ❌           |
-| DELETE |  ❌   | ✅           |
+| Method | [Safe](#safe-method) | [Idempotent](design.md#idempotent) |
+|--------|------------|---------------------------|
+| GET    | ✅          | ✅                         |
+| PUT    | ❌          | ✅                         |
+| POST   | ❌          | ❌                         |
+| DELETE | ❌          | ✅                         |
 
 ## Keep-alive
 
-Maintain a persistent TCP connection (reduces the number of TCP handshakes)
+Maintain a persistent TCP connection (reduces the number of [TCP handshakes](network.md#tcp-handshake))
 
 ## Main HTTP 2 features
 
@@ -63,7 +63,7 @@ Doesn't have any visible side effects and can be cached
 - 4xx: client error
 - 5xx: server error
 
-## Status code 301 vs 302
+## Status code 301 vs. 302
 
 301: redirect permanently
 
@@ -75,13 +75,9 @@ When clients are throttled, the most common way is to return a 429 (_Too Many Re
 
 The response can also include a _Retry-After_ header indicating how long to wait before making a new request (in seconds)
 
-## Too many requests status code
-
-429
-
 ## What happens if you type http://www.google.com in your browser
 
-- DNS lookup
-- TCP handshake
-- HTTPS handshake
+- [DNS](network.md#dns) lookup
+- [TCP handshake](network.md#tcp-handshake)
+- [HTTPS handshake](security.md#tls-handshake)
 - HTTP request (GET, port 80)

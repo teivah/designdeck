@@ -16,13 +16,13 @@ Causal dependency: one event causing another
 
 ## Consistent hashing
 
-Special kind of hashing such that when a resize occurs, only 1/n percent of the keys need to be rebalanced (n: number of nodes)
+Special kind of [hashing](#hashing) such that when a resize occurs, only 1/n percent of the keys need to be rebalanced (n: number of nodes)
 
 ## Exactly-once delivery
 
 Impossible to achieve
 
-However, we can achieve exactly-once processing using a dedup or by requiring the messages to be idempotent
+However, we can achieve exactly-once processing using a dedup or by requiring the messages to be [idempotent](#idempotent)
 
 ## Hashing
 
@@ -41,12 +41,6 @@ If executed more than once it has the same effect as if it was executed once
 Route requests across a pool of servers
 
 Note: Using a balancing based on the least loaded endpoint isn't efficient. A more efficient option is to randomly pick two servers and route the request to the least-loaded one of the two.
-
-## Load shedding
-
-Action to reduce the load on something
-
-Example: when the CPU utilization reaches a threshold, the server can start returning errors
 
 ## Locality
 
@@ -102,13 +96,13 @@ Relies mainly on HTTP but not mandatory
 
 ## REST vs. gRPC
 
-REST (architectural style):
+[REST](#rest) (architectural style):
 - Universality
 - Standardization (status code, ETag, If-Match, etc.)
 
 gRPC (RPC framework):
 - Contract
-- Binary protocol (faster, less bandwidth) // We could use HTTP/2 without gRPC and leverage binary protocols but it would require more efforts
+- Binary protocol (faster, less bandwidth) // We could use [HTTP/2](http.md#main-http-2-features) without gRPC and leverage binary protocols but it would require more efforts
 - Bidirectional
 
 ## Saga
@@ -118,6 +112,10 @@ Distributed transactions composed of a set of local transactions
 Each transaction has a corresponding compensation action to undo its changes
 
 Usually, a Saga is implemented with an orchestrator that manages the execution of the transactions and handles the compensations if needed
+
+## Scalability
+
+System's ability to cope with increased load
 
 ## Source of truth
 
