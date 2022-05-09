@@ -183,12 +183,6 @@ Term-partitioned indexes:
 - Write: multiple partitions are updated (the index is replicated for resiliency)
 - Query on the index: served from one partition
 
-## Downside of distributed transactions
-
-Performance penalty
-
-Example: distributed transactions in MySQL are reported to be over 10 times slower than single-node transactions
-
 ## Event sourcing
 
 Ensures that all changes to application state are stored as a sequence of events
@@ -240,10 +234,6 @@ Yet, if the connections become more complex, it's more natural to start modeling
 [Partition](#partitioning-sharding) is heavily loaded compared to others
 
 Also called skew
-
-## Impedance mismatch
-
-Differences between the DB and the programming language model
 
 ## In a database, strategy to handle rebalancing
 
@@ -313,6 +303,12 @@ Compaction can impact ongoing requests
 B-tree faster for reads, slower for write as it must write every piece of data at least twice in the WAL & tree itself (bigger write amplification)
 
 Each key exists in exactly one place => easier to offer strong transactional semantics
+
+## Main downside of distributed transactions
+
+Performance penalty
+
+Example: distributed transactions in MySQL are reported to be over 10 times slower than single-node transactions
 
 ## Main reasons to partition data
 
