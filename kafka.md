@@ -21,9 +21,9 @@ It ensures that Kafka will always retain at least the last message for each key 
 A partition that is not yet compacted may have more than one message with the same key
 
 Property:
-- retention.ms: maximum time the topic will retain old log segments before deleting or compacting them (default: 7 days)
+- `retention.ms`: maximum time the topic will retain old log segments before deleting or compacting them (default: 7 days)
 
-For low-throughput topic (topics with segments that should be rolled out because of segment.ms rather than segment.bytes), we should ensure that segment.ms is lower than retention.ms
+For low-throughput topic (topics with segments that should be rolled out because of `segment.ms` rather than `segment.bytes`), we should ensure that `segment.ms` is lower than `retention.ms`
 
 ## Offset
 
@@ -41,9 +41,9 @@ Yet, the ordering is guaranteed per partition
 
 ## Partition distribution
 
-The client implements a partitioner based on the key (e.g. hash(key) % number of partitions)
+The client implements a partitioner based on the key (e.g., hash(key) % number of partitions)
 
-This is not done on Kafka side
+This is not done on Kafka's side
 
 Default hash:
 - In Java: murmur2
@@ -68,7 +68,7 @@ Instead of storing all the messages of a partition in a single file, Kafka split
 A log segment is a file identified by the first message offset it contains
 
 Properties:
-- _segment.bytes_: maximum segment file size before to create a new segment (default: 1GB)
+- _segment.bytes_: maximum segment file size before creating a new segment (default: 1GB)
 - _segment.ms_: period after which a new segment is created, even if the segment is not full (default: 7 days)
 
 ## Shared subscription

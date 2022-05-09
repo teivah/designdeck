@@ -8,4 +8,4 @@ Network of geographically dispersed servers used to deliver static content (imag
 
 Push CDN: we are responsible for providing the content
 
-Pull CDN: grab new content from the server when user makes a request (TTL to be used)
+Pull CDN: grab new content from the server when a user makes a request (TTL to be used)

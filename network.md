@@ -2,7 +2,7 @@
 
 ## Backpressure
 
-A node limits its own rate of sending in order to avoid overloading. Queueing is done on sender side.
+A node limits its own rate of sending in order to avoid overloading. Queueing is done on the sender side.
 
 Also known as flow control
 
@@ -23,9 +23,9 @@ Example: User visits A and the page attempts to fetch data from B:
 
 ## Difference ping & heartbeat
 
-Ping: sends messages to a process and expect a response within a specified time period (request-reply)
+Ping: sends messages to a process and expects a response within a specified time period (request-reply)
 
-Heartbeat: a process is actively notifying its peers that it's still running by sending a messages (notification)
+Heartbeat: a process is actively notifying its peers that it's still running by sending a message (notification)
 
 ## Difference TCP & UDP
 
@@ -46,7 +46,7 @@ Note that caches are used to speed up the process: the browser, the OS and the D
 
 A TTL is used to inform the cache how long the entry is valid
 
-## Health checks: active vs passive
+## Health checks: active vs. passive
 
 Passive: performed by the load balances as it routes incoming requests (e.g., 503)
 
@@ -54,13 +54,13 @@ Active: the load balancer actively checking the health of the servers via a quer
 
 ## Layer 4 vs. layer 7 load balancer
 
-Layer 4 is faster and require less computing resources than layer 7 is but less flexible
+Layer 4 is faster and requires less computing resources than layer 7 is but less flexible
 
-Layer 4: look at info at the transport layer to distribute the requests (source, destination, port)
+Layer 4: look at the info at the transport layer to distribute the requests (source, destination, port)
 
 Forward packet using NAT
 
-Layer 7: look at info at the application layer to distribute the requests (header, message, etc.)
+Layer 7: look at the info at the application layer to distribute the requests (header, message, etc.)
 
 Terminate the network traffic, read then open a connection to the target server
 
@@ -88,7 +88,7 @@ It's one of the reasons why reusing a TCP connection leads to a performance incr
 
 ## TCP connection backlog
 
-SYN requests are queued before being accepted by an user-mode process
+SYN requests are queued before being accepted by a user-mode process
 
 When there are too many requests for the process, the backlog reaches a limit and SYN packets are dropped (to be later retransmitted by the client)
 
@@ -101,6 +101,6 @@ When there are too many requests for the process, the backlog reaches a limit an
 
 ## Websocket
 
-Communication protocol (layer 7) providing a full-duplex communication channel over a single TCP connection
+Communication protocol (layer 7) provides a full-duplex communication channel over a single TCP connection
 
-Different from HTTP but compatible with HTTP (starts as an HTTP connection and then is upgraded via well-defined handshake to a TCP connection)
+Different from HTTP but compatible with HTTP (starts as an HTTP connection and then is upgraded via a well-defined handshake to a TCP connection)

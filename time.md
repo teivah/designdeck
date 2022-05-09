@@ -4,7 +4,7 @@
 
 Network Time Protocol: used to synchronize clocks
 
-## Why can't we rely on system clock in distributed systems?
+## Why can't we rely on the system clock in distributed systems?
 
-- There's no guarantee that time are synchronized
-- In case of an NTP synchronization, the system clock of one node can jump backward in time
+- There's no guarantee that times are synchronized
+- In the case of an NTP synchronization, the system clock of one node can jump backward in time

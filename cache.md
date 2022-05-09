@@ -2,7 +2,7 @@
 
 ## Cache aside
 
-Application is responsible for reading and writing to the DB (using write through or write back policy)
+Application is responsible for reading and writing to the DB (using write-through or write-back policy)
 
 The cache doesn't interact with the storage directly
 
@@ -10,7 +10,7 @@ The cache doesn't interact with the storage directly
 
 Cache aside:
 - No stale data as the application invalidates cache data for every write (if cache is distributed)
-- May lead to consistency issue is write to the cache fail
+- May lead to consistency issues if writing to the cache fail
 
 Inline caching (cache on top of the store):
 - Easier for the application (single entry point, not up to the application to handle cache misses)

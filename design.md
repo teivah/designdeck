@@ -70,7 +70,7 @@ Throw away duplicate keys in the log and keep only the most recent update for ea
 
 Pros:
 - Organizational (each team dictates its own release schedule, etc.)
-- Codebase easier to digest
+- Codebase is easier to digest
 - Strong boundaries
 - Independent scaling
 - Independent data model
@@ -108,16 +108,16 @@ REST (architectural style):
 
 gRPC (RPC framework):
 - Contract
-- Binary protocol (faster, less bandwith) // We could use HTTP/2 without gRPC and leverage binary protocols but it would require more efforts
+- Binary protocol (faster, less bandwidth) // We could use HTTP/2 without gRPC and leverage binary protocols but it would require more efforts
 - Bidirectional
 
 ## Saga
 
-Distributed transaction composet of a set of local transactions
+Distributed transactions composed of a set of local transactions
 
 Each transaction has a corresponding compensation action to undo its changes
 
-Usually a Saga is implemented with an orchestrator that manages the execution of the transactions and handles the compensations if needed
+Usually, a Saga is implemented with an orchestrator that manages the execution of the transactions and handles the compensations if needed
 
 ## Source of truth
 
@@ -135,13 +135,13 @@ It is impossible to achieve an agreement between two parties in the presence of 
 
 128-bit number
 
-Collision probability: after generating 1 billion UUID every second for ~100 years, the probability of creating a single duplicate reach 50%
+Collision probability: after generating 1 billion UUID every second for ~100 years, the probability of creating a single duplicate reaches 50%
 
 ## Validation vs. verification
 
 Validation: process of analyzing the parts of the system and building mental models that reflects the interaction of those parts
 
-Example: validate the quality of water by inspecting all the pipe and infrastructure to capture, clean and deliver water
+Example: validate the quality of water by inspecting all the pipes and infrastructure to capture, clean and deliver water
 
 Verification: process of analyzing output at a system boundary
 
@@ -155,4 +155,4 @@ Algorithm that generates partial ordering of events and detects causality violat
 
 Reduce temporal coupling (not connected at the same time) => processes execute at independent rates
 
-If interaction pattern isn't request/response with client blocking until it receives the response
+If the interaction pattern isn't request/response with client blocking until it receives the response

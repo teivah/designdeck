@@ -13,14 +13,14 @@ A process in a system of interconnected parts in which the failure of one or few
 ## Circuit breaker
 
 Used to prevent a network or service failure from cascading to other failures
-Implemented on the client side
+Implemented on the client-side
 
 Three states:
 - Closed: accept requests
 - Open: do not accept requests and fail immediately
 - Half-open: give the service another chance (can also be implemented using a probe)
 
-The circuit can be opened when the health endpoint of the service is down or when the number of consecutive error reaches a threshold
+The circuit can be opened when the health endpoint of the service is down or when the number of consecutive errors reaches a threshold
 
 ## Exponential backoff
 
@@ -28,7 +28,7 @@ Wait time increased exponentially after every attempt
 
 ## Fallback & timeout
 
-When a services uses a fallback (be it a default value or a call to another service, for example), a best practice can be to ask the client to provide a timeout to define "how long before to fallback"
+When a service uses a fallback (be it a default value or a call to another service, for example), a best practice can be to ask the client to provide a timeout to define "how long before to fallback"
 
 Indeed, some clients may want to wait longer than others before to get a fallback, so it should be configurable per client
 
@@ -36,7 +36,7 @@ Indeed, some clients may want to wait longer than others before to get a fallbac
 
 Property of a system that can continue operating correctly in the presence of failure of its components
 
-## Hard vs soft dependencies
+## Hard vs. soft dependencies
 
 Hard dependency: one that has to be reliable for your service to be reliable (e.g., DB)
 
@@ -60,7 +60,7 @@ Instead of treating failure node failure as a binary problem (up or down), a phi
 
 Works by maintaining a sliding window, collecting arrival times of the most recent heartbeats
 
-Used to approximate arrival time of the next heartbeat and compute a suspicion level (how certain the failure detector is about a failure)
+Used to approximate the arrival time of the next heartbeat and compute a suspicion level (how certain the failure detector is about a failure)
 
 ## Rate-limiting (throttling)
 

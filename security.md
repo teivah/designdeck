@@ -15,7 +15,7 @@ With mutual TLS:
 1. Client hello: protocol, cipher, etc.
 2. Server hello: supported cipher, etc.
 3. Server sends its certificate
-4. Client checks the server certificate (e.g. make sure the CA are trusted in its truststore, etc.)
+4. Client checks the server certificate (e.g., make sure the CA are trusted in its truststore, etc.)
 5. Client sends its certificate
 6. Server checks the client certificate
 7. The client generates a session key encrypted with the public key of the client certificate (asymmetric encryption)

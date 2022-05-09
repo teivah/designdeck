@@ -1,17 +1,17 @@
 # HTTP
 
-## Cache control header
+## Cache-control header
 
 Allows setting how long to cache a response
 
-If marked as private, the results are intented for a single user (then won't be cached by a load balancer for example)
+If marked as private, the results are intended for a single user (then won't be cached by a load balancer for example)
 
 ## Etag
 
-Entity tag header that allows client to make conditional request
+Entity tag header that allows clients to make conditional requests
 
 Server returns an ETag being the date and time of the last update of a resource
-Client sends a If-Match header to update a resource only if clients have the most recent version
+Client sends a `If-Match` header to update a resource only if clients have the most recent version
 
 ## HLS
 
@@ -26,7 +26,7 @@ Request/response protocol used to encode and transport information between a cli
 Stateless (each request is executed independently)
 
 The request and the response are 2 standard message types exchanged in a single HTTP transaction
-- Request: method, url, HTTP version, headers, body
+- Request: method, UTL, HTTP version, headers, body
 - Response: HTTP version, status, reason, headers, body
 
 Relies on a transport protocol (OSI level 4, TCP most of the times but not mandatory) for error detection, flow control, reliability, etc.
@@ -71,7 +71,7 @@ Doesn't have any visible side effects and can be cached
 
 ## Status code 409
 
-When clients is throttled, the most common way is to return a 429 (_Too Many Requests_)
+When clients are throttled, the most common way is to return a 429 (_Too Many Requests_)
 
 The response can also include a _Retry-After_ header indicating how long to wait before making a new request (in seconds)
 
