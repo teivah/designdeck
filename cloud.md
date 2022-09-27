@@ -8,4 +8,8 @@ Network of geographically dispersed servers used to deliver static content (imag
 
 Two kinds of CDNs:
 - Push CDN: we are responsible for providing the content
-- Pull CDN: grab new content from the server when a user makes a request (TTL to be used)
+- Pull CDN: CDN is responsible for pulling the right content (expiration to be used)
+
+Pull is easier to handle whereas push gives us more flexibility
+
+Use case for pull: Docker Hub S3 layer

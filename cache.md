@@ -2,22 +2,22 @@
 
 ## Cache aside
 
-Application is responsible for reading and writing to the DB (using [write-through or write-back](#write-through-vs-write-back) policy)
+Application is responsible for reading and writing to the DB (using write-through or write-back policy)
 
 The cache doesn't interact with the storage directly
 
-## Cache aside vs. inline caching
+![](res/cache-aside.png)
+
+## Cache aside vs. read-through
 
 Cache aside:
-- No stale data as the application invalidates cache data for every write (if cache is distributed)
-- May lead to consistency issues if writing to the cache fail
+- Data model can be different from DB
 
-Inline caching (cache on top of the store):
-- Easier for the application (single entry point, not up to the application to handle cache misses)
+Read-through:
+- Same data model as DB
 - Can use the refresh-ahead pattern
-- Might get stale data in case of write back
 
-## Cache eviction policy 
+## Cache eviction policy
 
 - LRU (Least Recently Used)
 - LFU (Least Frequently Used)
@@ -26,46 +26,51 @@ Inline caching (cache on top of the store):
 ## Cache locations
 
 - Client caching
-- [CDN](cloud.md#cdn)
-- Application caching
+- CDN
+- In memory
+- Distributed cache
 - Database caching (query or object)
 
-## Main metric for cache
-
-Cache hit ratio: hits / total accesses
-
-## Read-through
-
-In [cache-aside](#cache-aside), the application is responsible for populating the cache
-
-In read-through, the logic is supported by a library or a cache provider on top of the DB
-
-Single entry point
-
-## Refresh-ahead
+## Cache: refresh-ahead
 
 Cache to automatically refresh any recently accessed entry prior to its expiration
 
 Used with read-through cache
 
-Pro: can result in reduced latency
+* Pro: can result in reduced latency
+* Con: not accurately predicting which items are likely to be needed in the future
 
-Con: not accurately predicting which items are likely to be needed in the future
+## Cache: write through vs. write back
 
-## Write through vs. write back
-
-When cache is inlined
+Main difference: consistency
 
 Write through:
-1. Write to the cache
-2. Store in DB
-3. Return
+1. Write to the cache and the DB in a single DB transaction (may still lead to cache inconsistency if the DB commit failed)
+2. Return
 
 Write back:
 1. Write to the cache
 2. Return
 3. Asynchronously store in DB
 
+## Four main distributed cache benefits
+
+- Improve read latency
+- Can improve availability (e.g., DB unavailable, responses are served from the cache)
+- Save computation time (e.g., SQL computation)
+- Independently scalable from the rest of the system
+
+## Main metric for cache
+
+Cache hit ratio: hits / total accesses
+
+## Read-through cache
+
+Read-through cache sits in-line with the DB
+
+Single entry point
+
 ## When to use a cache
 
-Data read frequently but modified infrequently
+- Speed up reads
+- Response complex to compute
