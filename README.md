@@ -280,4 +280,4 @@ The topics covered are the following:
 
 ## Additional notes
 
-* If you're preparing an algorithm & data structure interview, you can take a look at [Algo Deck](https://github.com/teivah/algodeck/)
+If you're preparing an algorithm & data structure interview, you can take a look at [Algo Deck](https://github.com/teivah/algodeck/)
