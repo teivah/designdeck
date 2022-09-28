@@ -35,7 +35,7 @@ Here is a flashcard example:
 
 ![](res/anki.png)
 
-The Anki version (a clone of the +200 flashcards from this repo) is available via a one-time GitHub sponsorship tier for $19: [❤️ Sponsor](https://github.com/sponsors/teivah), One-time tab, _Access to the latest Anki deck version of Design Deck_ tier.
+The Anki version (a clone of the +200 flashcards from this repo) is available via a one-time GitHub sponsorship tier for $21: [❤️ Sponsor](https://github.com/sponsors/teivah), One-time tab, _Access to the latest Anki deck version of Design Deck_ tier.
 
 ## Cards Index
 
