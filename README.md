@@ -18,6 +18,25 @@ The topics covered are the following:
 - [Reliability](reliability.md): reliability patterns
 - [Security](security.md): main security knowledge such as TLS, cipher, encryption
 
+## Anki Deck
+
+[Anki](https://apps.ankiweb.net/) is a free software (Windows/Mac/Linux/iPhone/Android) which makes remembering things easy. It utilizes spaced repetition which is a proven technique to increase the rate of memorization:
+
+[![](http://img.youtube.com/vi/-uMMRjrzPmE/0.jpg)](http://www.youtube.com/watch?v=-uMMRjrzPmE "Spaced Repetition: The most powerful study technique")
+
+_Spaced Repetition: The most powerful study technique on YouTube_
+
+> The single biggest change that Anki brings about is that it means memory is no longer a haphazard event, to be left to chance. Rather, it guarantees I will remember something, with minimal effort. That is, Anki makes memory a choice.
+
+_Michael A. Nielsen, "Augmenting Long-term Memory"_
+
+Using **Anki is a great way to prepare your algorithm & data structure interview**.
+Here is a flashcard example:
+
+![](res/anki.png)
+
+The Anki version (a clone of the +200 flashcards from this repo) is available via a one-time GitHub sponsorship tier for $19: [❤️ Sponsor](https://github.com/sponsors/teivah), One-time tab, _Access to the latest Anki deck version of Design Deck_ tier.
+
 ## Cards Index
 
 ### Cache
@@ -278,6 +297,6 @@ The topics covered are the following:
 * [Understanding Distributed Systems](https://understandingdistributed.systems/)
 * [Distributed Systems for practitioners](https://leanpub.com/distributed-systems-for-practitioners)
 
-## Additional notes
+## Additional Notes
 
 If you're preparing an algorithm & data structure interview, you can take a look at [Algo Deck](https://github.com/teivah/algodeck/)
