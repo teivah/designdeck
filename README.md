@@ -28,8 +28,6 @@ _Spaced Repetition: The most powerful study technique on YouTube_
 
 > The single biggest change that Anki brings about is that it means memory is no longer a haphazard event, to be left to chance. Rather, it guarantees I will remember something, with minimal effort. That is, Anki makes memory a choice.
 
-test
-
 _Michael A. Nielsen, "Augmenting Long-term Memory"_
 
 Using **Anki is a great way to prepare your algorithm & data structure interview**.
