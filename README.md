@@ -30,7 +30,7 @@ _Spaced Repetition: The most powerful study technique on YouTube_
 
 _Michael A. Nielsen, "Augmenting Long-term Memory"_
 
-Using **Anki is a great way to prepare your algorithm & data structure interview**.
+Using **Anki is a great way to prepare your system design interview**.
 Here is a flashcard example:
 
 ![](res/anki.png)
