@@ -226,6 +226,14 @@ Backpressure mechanism
 - syn-ack (receiver to sender) // ack the segment number received
 - ack (sender to receiver) // ack the segment number received
 
+## TCP Connection Termination
+
+4-way handshake
+- FIN (active close to passive close)
+- ACK (passive close to active close)
+- FIN (passive close to active close)
+- ACK (active close to passive close)
+
 ## Websocket
 
 Communication protocol (layer 7) provides a full-duplex communication channel over a single TCP connection and bidirectional streaming capabilities
