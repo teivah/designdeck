@@ -259,7 +259,6 @@ The Anki version (a clone of the +200 flashcards from this repo) is available vi
 * [TCP connection backlog](network.md#tcp-connection-backlog)
 * [TCP flow control](network.md#tcp-flow-control)
 * [TCP handshake](network.md#tcp-handshake)
-* [TCP Connection Termination](network.md#tcp-connection-termination)
 * [Websocket](network.md#websocket)
 * [Why can't we rely on the system clock in distributed systems?](network.md#why-cant-we-rely-on-the-system-clock-in-distributed-systems)
 

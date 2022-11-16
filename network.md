@@ -226,8 +226,6 @@ Backpressure mechanism
 - syn-ack (receiver to sender) // ack the segment number received
 - ack (sender to receiver) // ack the segment number received
 
-## TCP Connection Termination
-
 4-way handshake
 - FIN (active close to passive close)
 - ACK (passive close to active close)
