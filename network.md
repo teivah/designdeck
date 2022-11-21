@@ -213,6 +213,14 @@ SYN requests are queued before being accepted by a user-mode process
 
 When there are too many requests for the process, the backlog reaches a limit and SYN packets are dropped (to be later retransmitted by the client)
 
+## TCP connection termination
+
+4-way handshake
+- FIN (sender to receiver)
+- ACK (receiver to sender)
+- FIN (receiver to sender)
+- ACK (sender to receiver)
+
 ## TCP flow control
 
 A receiver communicates back to the sender the size of the buffer when acknowledging a segment
@@ -225,12 +233,6 @@ Backpressure mechanism
 - syn (sender to receiver)
 - syn-ack (receiver to sender) // ack the segment number received
 - ack (sender to receiver) // ack the segment number received
-
-4-way handshake
-- FIN (active close to passive close)
-- ACK (passive close to active close)
-- FIN (passive close to active close)
-- ACK (active close to passive close)
 
 ## Websocket
 

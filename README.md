@@ -257,6 +257,7 @@ The Anki version (a clone of the +200 flashcards from this repo) is available vi
 * [Switch](network.md#switch)
 * [TCP congestion control](network.md#tcp-congestion-control)
 * [TCP connection backlog](network.md#tcp-connection-backlog)
+* [TCP connection termination](network.md#tcp-connection-termination)
 * [TCP flow control](network.md#tcp-flow-control)
 * [TCP handshake](network.md#tcp-handshake)
 * [Websocket](network.md#websocket)
