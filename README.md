@@ -1,3 +1,3 @@
 # Design Deck
 
-Hosted online for a better user experience: [deckly.dev](https://deckly.dev).
+Hosted online for a better user experience: [deckly.dev](https://deckly.dev/designdeck).
